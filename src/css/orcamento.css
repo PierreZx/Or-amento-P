@@ -951,49 +951,6 @@ section {
    5. RESPONSIVIDADE
    ========================================================================== */
 
-   /* Adicione isso na seção de responsividade */
-@media screen and (max-width: 768px) {
-    .navbar .nav-list {
-        display: none;
-    }
-    
-    .mobile-menu-icon {
-        display: block;
-    }
-    
-    .mobile-menu {
-        position: fixed;
-        top: 0;
-        right: -100%;
-        width: 80%;
-        height: 100vh;
-        background: rgba(253, 163, 46, 0.95);
-        backdrop-filter: blur(8px);
-        transition: var(--transition);
-        z-index: 1001;
-        padding: 2rem;
-    }
-    
-    .mobile-menu.active {
-        right: 0;
-    }
-    
-    .mobile-menu ul {
-        flex-direction: column;
-        margin-top: 4rem;
-        gap: 2rem;
-    }
-    
-    .close-menu {
-        position: absolute;
-        top: 1rem;
-        right: 1rem;
-        color: white;
-        font-size: 2rem;
-        cursor: pointer;
-    }
-}
-
 @media screen and (min-width: 769px) {
     .mobile-menu-icon {
         display: none !important;
@@ -1018,7 +975,8 @@ section {
     }
     
     .logo-item img {
-        width: 4080px;
+        /* AJUSTADO: Tamanho para telas de tablet e notebooks menores */
+        width: 170px; 
     }
     
     .container-cards-inicio-1 {
@@ -1030,6 +988,8 @@ section {
     }
 }
 
+/* * Bloco principal para tablets e celulares, agora unificado e corrigido.
+*/
 @media screen and (max-width: 768px) {
     .navbar .nav-list {
         display: none;
@@ -1040,27 +1000,52 @@ section {
     }
     
     .mobile-menu {
-        display: block;
+        display: flex; /* Usamos flex para alinhar o conteúdo interno do menu */
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 80%;
+        height: 100vh;
+        background: rgba(253, 163, 46, 0.95);
+        backdrop-filter: blur(8px);
+        transition: var(--transition);
+        z-index: 1001;
+        padding: 2rem;
+        flex-direction: column; /* Organiza os itens do menu em coluna */
+    }
+    
+    .mobile-menu.active {
+        right: 0;
+    }
+    
+    .mobile-menu ul {
+        flex-direction: column;
+        margin-top: 4rem;
+        gap: 2rem;
+    }
+    
+    .close-menu {
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+        color: white;
+        font-size: 2rem;
+        cursor: pointer;
     }
     
     .header h1 {
         font-size: 2rem;
     }
     
-    .logo-comparison {
-        flex-direction: column;
-        gap: 3rem;
+    /* CORREÇÃO PRINCIPAL APLICADA AQUI */
+    .logos-container { /* Corrigido: usando a classe correta do seu HTML */
+        flex-direction: column; /* Empilha as logos na vertical */
+        gap: 2.5rem;             /* Define o espaçamento vertical entre elas */
     }
-    
-    .logo-comparison::before {
-        width: 2px;
-        height: 80px;
-        left: 50%;
-        top: calc(50% - 40px);
-    }
-    
-    .logo-comparison::after {
-        content: '↓';
+
+    /* Esconde a seta e as linhas, que não fazem sentido no layout vertical */
+    .divider {
+        display: none;
     }
     
     .price {
@@ -1110,7 +1095,8 @@ section {
     }
     
     .logo-item img {
-        width: 500px;
+        /* AJUSTADO: Tamanho final para celulares */
+        width: 150px;
     }
     
     .container-cards-inicio-1 {
